@@ -15,9 +15,13 @@ def new_all_odd(number_list):
     new_list = [number for number in number_list if number % 2 == 1]
     return new_list
 
+def filter_odd(number_list):
+    new_list = filter(lambda number: number % 2 == 1,number_list)
+    return new_list
+
 #print(all_odd(number_list))
 #print(new_all_odd(number_list))
-
+#print(filter_odd(number_list))
 
 # Write a function that takes a list of numbers and returns a new list with only the even numbers.
 def all_even(number_list):
@@ -31,8 +35,13 @@ def new_all_even(number_list):
     new_list = [number for number in number_list if number % 2 == 0]
     return new_list
 
-#print(all_even(number_list))
-#print(new_all_even(number_list))
+def filter_all_even(number_list):
+    new_list = filter(lambda number: number % 2 == 0, number_list)
+    return new_list
+
+print(all_even(number_list))
+print(new_all_even(number_list))
+print(filter_all_even(number_list))
 
 # Write a function that takes a list of strings and returns a new list with all strings of length 4 or greater.
 def long_words(word_list):
