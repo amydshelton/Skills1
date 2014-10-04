@@ -3,6 +3,8 @@
 number_list = [-5, 6, 4, 8, 15, 16, 23, 42, 2, 7]
 word_list = [ "What", "about", "the", "Spam", "sausage", "spam", "spam", "bacon", "spam", "tomato", "and", "spam"]
 
+### THESE ARE FILTERS!!!!
+
 # Write a function that takes a list of numbers and returns a new list with only the odd numbers.
 def all_odd(number_list):
     new_list = []
@@ -39,9 +41,9 @@ def filter_all_even(number_list):
     new_list = filter(lambda number: number % 2 == 0, number_list)
     return new_list
 
-print(all_even(number_list))
-print(new_all_even(number_list))
-print(filter_all_even(number_list))
+#print(all_even(number_list))
+#print(new_all_even(number_list))
+#print(filter_all_even(number_list))
 
 # Write a function that takes a list of strings and returns a new list with all strings of length 4 or greater.
 def long_words(word_list):
@@ -55,9 +57,16 @@ def new_long_words(word_list):
     new_list = [word for word in word_list if len(word) >= 4]
     return new_list
 
+def filter_long_words(word_list):
+    new_list = filter(lambda word: len(word) >= 4, word_list)
+    return new_list
+
 #print(long_words(word_list))
 #print(new_long_words(word_list))
+#print(filter_long_words(word_list))
 
+
+### THESE ARE REDUCE FUNCTIONS!!!!!
 
 # Write a function that finds the smallest element in a list of integers and returns it.
 def smallest(number_list):
@@ -71,10 +80,15 @@ def smallest(number_list):
 #Is this a map or a filter?  Is there a way to do list comprehension here w/o using min function? 
 #(Same for max)
 
-def new_smallest(number_list):
-    min_numb = [number for number in number_list if number ==  min(number_list)]
-    return min_numb #returns a list instead of a number, so not great...
+# def new_smallest(number_list):
+#     min_numb = [number for number in number_list if number ==  min(number_list)]
+#     return min_numb #returns a list instead of a number, so not great...
 
+# def filter_smallest(number_list):
+#     min_numb = filter(lambda number: number == min(number_list),number_list)
+#     return min_numb
+
+#print(filter_smallest)
 #print(smallest(number_list))
 #print(new_smallest(number_list))
 
@@ -94,6 +108,9 @@ def new_largest(number_list):
 #print largest(number_list)
 #print new_largest(number_list)
 
+
+### THESE ARE MAP FUNCTIONS!!
+
 # Write a function that takes a list of numbers and returns a new list of all those numbers divided by two.
 def halvesies(number_list):
     new_list = []
@@ -106,9 +123,13 @@ def newhalvesies(number_list):
     new_list = [(number/2.) for number in number_list]
     return new_list
 
-#print halvesies(number_list)
+def map_halvsies(number_list):
+    new_list = map(lambda number: number / 2., number_list)
+    return new_list
 
+#print halvesies(number_list)
 #print newhalvesies(number_list)
+#print map_halvsies(number_list)
 
 # Write a function that takes a list of words and returns a list of all the lengths of those words.
 def word_lengths(word_list):
@@ -123,8 +144,16 @@ def new_word_lengths(word_list):
     new_list = [len(word) for word in word_list]
     return new_list
 
-#print(word_lengths(word_list))
-#print(new_word_lengths(word_list))
+
+def map_word_lengths(word_list):
+     new_list = map(lambda word: len(word), word_list)
+     return new_list
+
+# print(word_lengths(word_list))
+# print(new_word_lengths(word_list))
+# print map_word_lengths(word_list)
+
+### THESE ARE REDUCE FUNCTIONS!!!
 
 # Write a function (using iteration) that sums all the numbers in a list.
 def sum_numbers(number_list):
@@ -133,7 +162,13 @@ def sum_numbers(number_list):
         total += number
     return total
 
-#print(sum_numbers(number_list))
+def reduce_sum(number_list):
+    total = reduce(lambda number1, number2: number1 + number2, number_list)
+    return total
+
+
+print reduce_sum(number_list)
+print(sum_numbers(number_list))
 
 # Write a function that multiplies all the numbers in a list together.
 def mult_numbers(number_list):
@@ -142,6 +177,11 @@ def mult_numbers(number_list):
         total = total * number
     return total
 
+def reduce_mult(number_list):
+    total = reduce(lambda number1, number2: number1 * number2, number_list)
+    return total
+
+#  print(reduce_mult(number_list))
 #print(mult_numbers(number_list))
 
 # Write a function that joins all the strings in a list together (without using the join method) and returns a single string.
