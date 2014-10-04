@@ -77,20 +77,13 @@ def smallest(number_list):
 
     return min_numb
 
-#Is this a map or a filter?  Is there a way to do list comprehension here w/o using min function? 
-#(Same for max)
+def reduce_smallest(number_list):
+    min_numb = reduce(lambda number1,number2: number1 if number1 < number2 else number2, number_list)
+    return min_numb
 
-# def new_smallest(number_list):
-#     min_numb = [number for number in number_list if number ==  min(number_list)]
-#     return min_numb #returns a list instead of a number, so not great...
 
-# def filter_smallest(number_list):
-#     min_numb = filter(lambda number: number == min(number_list),number_list)
-#     return min_numb
-
-#print(filter_smallest)
+#print reduce_smallest(number_list)
 #print(smallest(number_list))
-#print(new_smallest(number_list))
 
 # Write a function that finds the largest element in a list of integers and returns it.
 def largest(number_list):
@@ -101,13 +94,13 @@ def largest(number_list):
 
     return max_numb
 
-def new_largest(number_list):
-    max_numb =  [number for number in number_list if number == max(number_list)]
-    return max_numb #again, returns a list
+
+def reduce_largest(number_list):
+    max_numb = reduce(lambda number1,number2: number1 if number1 > number2 else number2, number_list)
+    return max_numb
 
 #print largest(number_list)
-#print new_largest(number_list)
-
+#print reduce_largest(number_list)
 
 ### THESE ARE MAP FUNCTIONS!!
 
@@ -166,9 +159,8 @@ def reduce_sum(number_list):
     total = reduce(lambda number1, number2: number1 + number2, number_list)
     return total
 
-
-print reduce_sum(number_list)
-print(sum_numbers(number_list))
+#print reduce_sum(number_list)
+#print(sum_numbers(number_list))
 
 # Write a function that multiplies all the numbers in a list together.
 def mult_numbers(number_list):
@@ -191,12 +183,23 @@ def join_strings(word_list):
         new_string = new_string + word
     return new_string
 
+def reduce_join_stings(word_list):
+    new_string = reduce(lambda x,y: x+y, word_list)
+    return new_string
+
 #print(join_strings(word_list))
+#print reduce_join_stings(word_list)
+
 
 # Write a function that takes a list of integers and returns the average (without using the avg method)
 def average(number_list):
     average = float(sum_numbers(number_list))/len(number_list)
     return average
 
-#print(average(number_list))
+def reduce_average(number_list):
+    average = reduce(lambda x, y: x + y, number_list)/float(len(number_list))
+    return average
 
+
+#print(average(number_list))
+#print(reduce_average(number_list))
